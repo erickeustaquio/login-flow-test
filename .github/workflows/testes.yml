@@ -1,0 +1,29 @@
+name: Executar Testes Automatizados
+
+# Dispara os testes a cada push ou pull request na branch principal
+on:
+  push:
+    branches: [ "principal" ]
+  pull_request:
+    branches: [ "principal" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Baixa o código do seu repositório
+    - name: Baixar o código
+      uses: actions/checkout@v4
+
+    # 2. Instala o Java JDK 17 (mude para a sua versão se for diferente, ex: '11' ou '21')
+    - name: Configurar o Java JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    # 3. Executa os testes em modo headless
+    - name: Executar os testes com Maven
+      run: mvn clean test
