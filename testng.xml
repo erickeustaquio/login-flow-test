@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Login Flow Suite">
+    <test name="Login Tests">
+        <classes>
+            <class name="com.erickeustaquio.base.LoginTest"/>
+        </classes>
+    </test>
+</suite>
+
